@@ -20,7 +20,7 @@ func storeFile(filename string) error {
 	return store(f)
 }
 
-func storaData(data []byte) error {
+func storeData(data []byte) error {
 	r := bytes.NewReader(data)
 	return store(r)
 }
