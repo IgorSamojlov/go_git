@@ -11,11 +11,11 @@ type customReadCloser struct {
 	file       io.ReadCloser
 }
 
-func (c customReadCloser) Read(p []byte) (int, error) {
+func (c *customReadCloser) Read(p []byte) (int, error) {
 	return c.flatReader.Read(p)
 }
 
-func (c customReadCloser) Close() error {
+func (c *customReadCloser) Close() error {
 	c.flatReader.Close()
 	return c.file.Close()
 }
@@ -59,5 +59,5 @@ func fetch(sum string) (io.ReadCloser, error) {
 
 	flatReader := flate.NewReader(storedFile)
 
-	return customReadCloser{flatReader: flatReader, file: storedFile}, nil
+	return &customReadCloser{flatReader: flatReader, file: storedFile}, nil
 }

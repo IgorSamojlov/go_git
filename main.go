@@ -5,11 +5,6 @@ import (
 	"os"
 )
 
-const (
-	REPO_DIR = ".git2"
-	OBJ_DIR  = "objects"
-)
-
 func main() {
 	var err error
 	command := os.Args[1]
@@ -28,5 +23,7 @@ func main() {
 		}
 	case "-fetch":
 		print("fetch")
+	case "config":
+		configure(os.Args[2], os.Args[3])
 	}
 }

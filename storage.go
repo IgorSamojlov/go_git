@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"compress/flate"
-	"crypto/sha256"
+	"crypto/sha1"
 	"encoding/hex"
 	"io"
 	"os"
@@ -27,7 +27,7 @@ func storeData(data []byte) error {
 
 // store - save byte array into the storage
 func store(data io.ReadSeeker) error {
-	h := sha256.New()
+	h := sha1.New()
 
 	_, err := io.Copy(h, data)
 	if err != nil {
