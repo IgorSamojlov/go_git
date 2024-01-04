@@ -47,7 +47,6 @@ func main() {
 			log.Fatalf("Can not log: %s", err)
 		}
 		fmt.Println(string(data))
-
 	default:
 		log.Fatalf("Argument error")
 	}

@@ -36,6 +36,15 @@ func (d treeData) Marshal() ([]byte, error) {
 }
 
 func tree(path string, iP *ignorePatterns) (string, error) {
+	isM, err := iP.isMatched(path)
+	if err != nil {
+		return "", err
+	}
+	if isM {
+		fmt.Println(path)
+		return "", nil
+	}
+
 	b := treeData{}
 	if path == "" {
 		path = "./"
@@ -47,7 +56,7 @@ func tree(path string, iP *ignorePatterns) (string, error) {
 	}
 
 	for _, file := range files {
-		isM, err := iP.isMatched(path)
+		isM, err := iP.isMatched(file.Name())
 		if err != nil {
 			return "", err
 		}

@@ -10,7 +10,6 @@ import (
 )
 
 func storeFile(filename string) (string, error) {
-	// check if exists :red:
 	f, err := os.Open(filename)
 	if err != nil {
 		return "", err

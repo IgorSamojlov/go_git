@@ -14,6 +14,7 @@ const (
 	REFS_FILE   = "refs"
 	MAIN_BRANCH = "main"
 	HEAD_FILE   = "HEAD"
+	INDEX_FILE  = "index"
 )
 
 func repoInit() error {
